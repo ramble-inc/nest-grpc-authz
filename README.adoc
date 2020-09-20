@@ -1,4 +1,4 @@
-= @ramble-inc/nest-authz-grpc
+= @ramble-inc/nest-grpc-authz
 
 == Getting Started
 

@@ -1,7 +1,7 @@
 {
-  "name": "@ramble-inc/nest-authz",
+  "name": "@ramble-inc/nest-grpc-authz",
   "version": "0.0.1",
-  "description": "NestJS authorization guard in Ramble.inc",
+  "description": "NestJS authorization guard for gRPC in Ramble.inc",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
