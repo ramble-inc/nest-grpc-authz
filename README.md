@@ -1,5 +1,10 @@
 # @ramble-inc/nest-grpc-authz
 
+[![npm version](https://badge.fury.io/js/%40ramble-inc%2Fnest-grpc-authz.svg)](https://badge.fury.io/js/%40ramble-inc%2Fnest-grpc-authz)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![npm](https://img.shields.io/npm/dm/@ramble-inc/nest-grpc-authz)
+![CI](https://github.com/ramble-inc/nest-grpc-authz/workflows/CI/badge.svg)
+
 ## Getting Started
 
 ### Installation
