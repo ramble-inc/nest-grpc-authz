@@ -1,7 +1,7 @@
 {
-  "name": "@ramble-inc/nest-logger",
+  "name": "@ramble-inc/nest-authz",
   "version": "0.0.1",
-  "description": "NestJS logger interceptor in Ramble.inc",
+  "description": "NestJS authorization guard in Ramble.inc",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -15,17 +15,17 @@
   },
   "keywords": [
     "nestjs",
-    "logger",
-    "interceptor",
-    "winston",
+    "authorization",
+    "guard",
     "ramble"
   ],
   "license": "MIT",
   "dependencies": {
-    "@nestjs/config": "^0.5.0",
     "@nestjs/jwt": "^7.1.0",
+    "@nestjs/passport": "^7.1.0",
     "grpc": "^1.24.3",
-    "jwk-to-pem": "^2.0.4"
+    "jwk-to-pem": "^2.0.4",
+    "passport": "^0.4.1"
   },
   "devDependencies": {
     "@nestjs/common": "^7.4.2",
@@ -38,11 +38,12 @@
     "lint-staged": "^10.2.13",
     "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.2",
+    "rxjs": "^6.6.3",
     "typescript": "^4.0.2"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.4.2",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.2"
   }
 }

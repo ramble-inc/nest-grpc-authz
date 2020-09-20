@@ -1,0 +1,91 @@
+= @ramble-inc/nest-authz-grpc
+
+== Getting Started
+
+=== Installation
+
+Using `yarn`
+
+[source,shell script]
+----
+yarn add @ramble-inc/nest-authz
+----
+
+or using `npm`
+
+[source,shell script]
+----
+npm i --save @ramble-inc/nest-authz
+----
+
+=== Use Guard
+
+==== Set global guard
+
+`AuthGuard` depends on `AuthService` , so import `AuthModule` .
+
+[NOTE]
+====
+Do not use `useGlobalGuards()` because cannot inject dependencies to guard. +
+See https://docs.nestjs.com/guards#binding-guards[NestJS official documents]
+====
+
+[source,typescript]
+----
+@Module({
+  imports: [
+    AuthModule.forRoot({
+      jwksUri: 'https://example.com/.well-known/jwks.json',
+      clientId: 'client_id',
+      issuerUri: 'https://example.com/',
+    }),
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
+})
+export class AppModule {}
+----
+
+or set options with `ConfigService`
+
+[source,typescript]
+----
+@Module({
+  imports: [
+    AuthModule.forRootAsync({
+      useFactory: (configService: ConfigService) => {
+        return {
+          jwksUri: configService.get('JWKS_URI'),
+          clientId: configService.get('CLIENT_ID'),
+          issuerUri: configService.get('ISSUER_URI'),
+        };
+      },
+      imports: [ConfigModule],
+      inject: [ConfigService],
+    }),
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
+})
+export class AppModule {}
+----
+
+=== Get decoded JWT payload
+
+`AuthGuard` adds entire JWT payload to metadata. +
+You can safely get JWT payload by using `isMetadataWithClaim` (Type Guard).
+
+[source,typescript]
+----
+if (isMetadataWithClaim(metadata)) {
+  const { claim } = metadata;
+}
+----
