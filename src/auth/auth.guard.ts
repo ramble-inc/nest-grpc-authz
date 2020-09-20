@@ -24,7 +24,6 @@ export class AuthGuard implements CanActivate {
       } as ClaimVerifyRequest)
       .then((value) => {
         if (value.error) {
-          console.log(value.error);
           return false;
         }
 
