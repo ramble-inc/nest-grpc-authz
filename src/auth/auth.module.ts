@@ -1,9 +1,9 @@
 import { DynamicModule, HttpModule, Module, Provider } from '@nestjs/common';
-import { AuthOptionsFactory } from '@nestjs/passport';
 import {
   AUTH_OPTIONS,
   AuthModuleAsyncOptions,
   AuthModuleOptions,
+  AuthModuleOptionsFactory,
 } from './auth.interface';
 import { AuthService } from './auth.service';
 
@@ -64,8 +64,8 @@ export class AuthModule {
     }
     return {
       provide: AUTH_OPTIONS,
-      useFactory: async (optionsFactory: AuthOptionsFactory) => {
-        return optionsFactory.createAuthOptions();
+      useFactory: async (optionsFactory: AuthModuleOptionsFactory) => {
+        return optionsFactory.createAuthModuleOptions();
       },
       inject: [options.useClass],
     };
